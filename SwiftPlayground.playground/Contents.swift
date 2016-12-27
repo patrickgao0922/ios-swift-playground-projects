@@ -72,9 +72,11 @@ performPullable(thing: exampleThing)
 
 /**
  Decorating a printable string
+ This piece of code is for print object with article:
+ example:print("This is \(an ~ exampleThing)")
  */
 
-// Overloading a operator
+// Custom a operator ~
 //operator infix ~ = {}
 // Global function
 
@@ -95,4 +97,5 @@ func an(object:Thing) -> String{
     
 }
 
+// Test the custom operator
 print("This is \(an ~ exampleThing)")
