@@ -34,3 +34,35 @@ let outArray2 = inputArray.sorted { (num1, num2) -> Bool in
 }
 
 
+/**
+ Example of protocol value
+ */
+
+protocol Pullable {
+    func pull()
+}
+
+class Thing {
+}
+
+class Board: Thing,Pullable{
+    func pull() {
+        print("Pull!!!!")
+    }
+}
+
+let exampleBoard = Board()
+
+func performPullable(thing:Thing) {
+    if let pullableThing = thing as? Pullable {
+        pullableThing.pull()
+    }
+    else {
+        print("The Object is not pullable!")
+    }
+}
+
+performPullable(thing: exampleBoard)
+let exampleThing = Thing()
+performPullable(thing: exampleThing)
+
