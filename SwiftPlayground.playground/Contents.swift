@@ -84,6 +84,8 @@ extension Thing{
     }
 }
 
+infix operator  ~
+
 func ~ (decorator:(Thing) -> String, object: Thing) -> String {
     return decorator(object)
 }
@@ -92,3 +94,5 @@ func an(object:Thing) -> String{
     return object.naveWithArticle
     
 }
+
+print("This is \(an ~ exampleThing)")
