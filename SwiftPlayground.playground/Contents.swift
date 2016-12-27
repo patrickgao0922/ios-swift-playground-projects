@@ -43,6 +43,10 @@ protocol Pullable {
 }
 
 class Thing {
+    var name:String!
+    init(_ name:String) {
+        self.name = name
+    }
 }
 
 class Board: Thing,Pullable{
@@ -51,7 +55,7 @@ class Board: Thing,Pullable{
     }
 }
 
-let exampleBoard = Board()
+let exampleBoard = Board("Board")
 
 func performPullable(thing:Thing) {
     if let pullableThing = thing as? Pullable {
@@ -63,6 +67,28 @@ func performPullable(thing:Thing) {
 }
 
 performPullable(thing: exampleBoard)
-let exampleThing = Thing()
+let exampleThing = Thing("Thing")
 performPullable(thing: exampleThing)
 
+/**
+ Decorating a printable string
+ */
+
+// Overloading a operator
+//operator infix ~ = {}
+// Global function
+
+extension Thing{
+    var naveWithArticle: String {
+        return "a " + name
+    }
+}
+
+func ~ (decorator:(Thing) -> String, object: Thing) -> String {
+    return decorator(object)
+}
+
+func an(object:Thing) -> String{
+    return object.naveWithArticle
+    
+}
